@@ -3,7 +3,8 @@
 #
 # created: 21 November 2018 
 # 
-# title: Building Web Applications in R with Shiny
+# title: Datacamp
+#        Building Web Applications in R with Shiny
 #        Introduction and Shiny Basics
 #
 
@@ -23,11 +24,8 @@
 
 library("tidyverse")
 library("shiny")
-load("data/movies.Rdata")
-str(movies)
-
-
-View(movies)
+#load("data/movies.Rdata")
+# str(movies)
 
 #############
 # named vectors:
