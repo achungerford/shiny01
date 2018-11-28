@@ -72,3 +72,65 @@
 #
 # server  has R code you're already familiar with, but with some shiny code
 #         to aacheive reactivity
+
+
+
+
+
+########################## CHAPTER 2 NOTES ####################################
+
+# changing the UI input from color/z dropdown into a slider
+
+# A new sliderInput is given with some blanks to fill in
+#   This widget will control the transparency of the plotted points.
+#   It should have the ID alpha and the user facing label "Alpha:".
+#   Its values should range between 0 and 1, with a default value set to 0.5.
+
+# previous z-dropdown input code
+
+# Select variable for color
+selectInput(inputId = "z", 
+            label = "Color by:",
+            choices = c("Title type" = "title_type",
+                        "Genre" = "genre",
+                        "MPAA rating" = "mpaa_rating",
+                        "Critics rating" = "critics_rating",
+                        "Audience rating" = "audience_rating"),
+            selected = "mpaa_rating")
+
+
+# new slider code -- you also have to change the output code in server(){}
+#                   specifically geom_point(alpha = input$alpha)
+
+# Set alpha level
+sliderInput(inputId = "alpha", 
+            label = "Alpha:", 
+            min = 0, max = 1, 
+            value = 0.5)
+
+# Create scatterplot object the plotOutput function is expecting
+output$scatterplot <- renderPlot({
+  ggplot(data = movies, aes_string(x = input$x, y = input$y)) +
+    geom_point(alpha = input$alpha)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
