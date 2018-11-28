@@ -24,3 +24,51 @@
 # shinyApp(ui = ui, server = server)
 
 
+
+########################### UI FUNCTION ######################################
+
+# the setup for user-defined inputs for a plot and info about where
+# physcially on the app the plot should appear is defined in the UI
+
+
+######################## SERVER FUNCTION ######################################
+
+# calculates outputs and any other claculations needed for outputs
+
+# basic task of server function is to define the relationship between
+# inputs and outputs
+
+# accesses inputs selected by the user to perform computations and specifies
+# how outputs laid out in the UI should be updated
+
+# if your app has a plot, code for it lives in the server function, however,
+# the setup for user-defined inputs for the plot and info about where
+# physcially on the app the plot should appear is defined in the UI
+
+# server function can actually handle a 3rd arg called "session", but
+# we'll ignore it for now
+
+# renderplot()
+#   specifies how the output of the plot should be updated
+#   the difference in your plot compared to normal ggplot2 code is how the
+#   x and y variables are defined. They come from the input list that was
+#   built in the UI
+
+# RULES of server function
+#   1. Always save objects to display to output$xx (named output lists)
+#   2. Always build objects to display with one of the render*() functions
+#         renderPlot(), renderTable(), renderWhatever() etc.
+#   3. Use input values from the named input list with input$xx
+
+
+# Outputs
+#   renderPlot() was used for rendering our reactive plot
+#   then laid out the plot with plotOutput in UI
+
+
+# Simplified way of understanding UI vs. Server functions
+#
+# UI      has syntax specfic to shiny-- i.e. shiny-specifc code
+#
+# server  has R code you're already familiar with, but with some shiny code
+#         to aacheive reactivity
