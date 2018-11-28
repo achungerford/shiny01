@@ -56,7 +56,13 @@ ui <- fluidPage(
                               "MPAA rating" = "mpaa_rating",
                               "Critics rating" = "critics_rating",
                               "Audience rating" = "audience_rating"),
-                  selected = "mpaa_rating")
+                  selected = "mpaa_rating"),
+      
+      # Set alpha level
+      sliderInput(inputId = "alpha", 
+                  label = "Alpha:", 
+                  min = 0, max = 1, 
+                  value = 0.5)
     ),
     
     # Outputs
@@ -71,9 +77,10 @@ server <- function(input, output) {
   
   # Create the scatterplot object the plotOutput function is expecting
   output$scatterplot <- renderPlot({
-    ggplot(data = movies, aes_string(x = input$x, y = input$y,
+    ggplot(data = movies, aes_string(x = input$x,
+                                     y = input$y,
                                      color = input$z)) +
-      geom_point()
+      geom_point(alpha = input$alpha)
   })
 }
 
